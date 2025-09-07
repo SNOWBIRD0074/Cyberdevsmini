@@ -1,262 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HASHAN-MD MINI BOT</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ᴀɴᴜᴡʜ ᴍᴅ ᴍɪɴɪ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #000010;
-      color: #fff;
-      overflow: hidden;
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+      20%, 40%, 60%, 80% { transform: translateX(2px); }
     }
-
-    .neon-bubbles {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 0;
-      pointer-events: none;
+    
+    @keyframes twinkle {
+      0% { opacity: 0.2; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.1); }
+      100% { opacity: 0.2; transform: scale(0.8); }
     }
-
-    .neon-bubbles span {
+    
+    .neon-text {
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #13141429, 0 0 20px #0073e6, 0 0 25px #0073e6;
+    }
+    
+    .neon-border {
+      box-shadow: 0 0 5px #150000, 0 0 10px #fff, 0 0 15px #0d0d0d29, 0 0 20px #0073e6;
+    }
+    
+    .neon-button {
+      box-shadow: 0 0 5px #fff, 0 0 10px #08605d, 0 0 15px #ff00de, 0 0 20px #ff00de;
+    }
+    
+    .neon-button:hover {
+      box-shadow: 0 0 5px #fff, 0 0 10px #3b3939, 0 0 15px #ff00de, 0 0 20px #382b36, 0 0 25px #ff00de;
+    }
+    
+    .shake-animation {
+      animation: shake 0.5s;
+    }
+    
+    .star {
       position: absolute;
-      display: block;
-      width: 12px;
-      height: 12px;
+      background-color: white;
       border-radius: 50%;
-      background: radial-gradient(circle, #00f0ff, #0077ff);
-      animation: rise 7s linear infinite;
-      filter: drop-shadow(0 0 6px #00f0ff);
-      opacity: 0.7;
+      animation: twinkle 2s infinite;
     }
-
-    @keyframes rise {
-      0% {
-        transform: translateY(100vh) scale(0.5);
-        opacity: 0;
-      }
-      30% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-10vh) scale(1.2);
-        opacity: 0;
-      }
-    }
-
-    .container {
-      position: relative;
-      z-index: 2;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 1rem;
-    }
-
-    .box {
-      background: rgba(0, 0, 50, 0.4);
-      backdrop-filter: blur(15px);
-      padding: 2rem;
-      border-radius: 25px;
-      box-shadow: 0 0 25px #7edcff;
-      text-align: center;
-      width: 370px;
-      animation: fadeIn 1s ease-in-out;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h3, h6 {
-      color: #7edcff;
-      margin: 10px 0;
-      text-shadow: 0 0 10px #b0f0ff;
-    }
-
-    .input-container {
-      margin-top: 20px;
-      display: flex;
-    }
-
-    .input-container input {
-      width: 70%;
-      padding: 0.8rem;
-      border-radius: 10px 0 0 10px;
-      border: none;
-      outline: none;
-      background: #fff;
-      font-size: 1rem;
-      color: #000;
-    }
-
-    .input-container button {
-      width: 30%;
-      padding: 0.8rem;
-      border: none;
-      border-radius: 0 10px 10px 0;
-      background: #33bbff;
-      color: #fff;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .input-container button:hover {
-      background: #66d9ff;
-      box-shadow: 0 0 10px #84f0ff;
-    }
-
-    .centered-text {
-      margin-top: 20px;
-      color: white;
-      font-weight: bold;
-      text-shadow: 0 0 5px #84dfff;
-    }
-
-    .info-container {
-      margin-top: 25px;
-      background: rgba(0, 0, 80, 0.3);
-      padding: 1rem 1.5rem;
-      border-radius: 20px;
-      color: #aeeeff;
-      box-shadow: 0 0 25px #7edcff;
-      animation: glow 2s infinite ease-in-out;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-      flex-direction: column;
-    }
-
-    @keyframes glow {
-      0%, 100% { box-shadow: 0 0 15px #7edcff; }
-      50% { box-shadow: 0 0 30px #b0f0ff; }
-    }
-
-    .info-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .info-item i {
-      animation: rotate 6s linear infinite;
-      color: #7edcff;
-    }
-
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    #copy {
-      cursor: pointer;
-      animation: blink 1s infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.6; }
+    
+    .gradient-text {
+      background: linear-gradient(90deg, #202021, #fc00ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
   </style>
 </head>
-<body>
-  <div class="neon-bubbles" id="neon-bubbles"></div>
-  <div class="container">
-    <div class="box">
-      <i class="fa fa-user" style="color:#7edcff;"></i>
-      <h3>HASHAN-MD MINI BOT</h3>
-      <h6>CREATE BY HASHIYA TECH</h6>
-      <h6>📱 Enter your number with country code</h6>
-      <div class="input-container">
-        <input placeholder="9470604xxxx" type="number" id="number">
-        <button id="submit">Submit</button>
-      </div>
-      <a id="waiting-message" class="centered-text" style="display: none;">Please wait a while...</a>
-      <main id="pair"></main>
-
-      <div class="info-container">
-     
-        <div class="info-item">
-          <i class="fas fa-clock"></i> Time: <span id="uptime">00:00:00</span>
+<body class="min-h-screen flex items-center justify-center bg-black overflow-hidden">
+  <!-- Background stars -->
+  <div id="stars-container" class="fixed inset-0 pointer-events-none"></div>
+  
+  <!-- Main container -->
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="main">
+      <div class="box max-w-md mx-auto p-8 bg-black bg-opacity-70 rounded-3xl backdrop-blur-lg border border-white border-opacity-20 shadow-xl neon-border relative overflow-hidden">
+        <!-- Glowing effect behind the box -->
+        <div class="absolute -inset-1 bg-blue-500 rounded-3xl opacity-20 blur-lg"></div>
+        
+        <div id="text" class="relative z-10">
+          <!-- Glowing user icon -->
+          <div class="flex justify-center mb-6">
+            <i class="fas fa-user text-5xl gradient-text animate-pulse"></i>
+          </div>
+          
+          <h3 class="text-2xl font-bold text-center mb-4 gradient-text neon-text">ʟɪɴᴋ ᴡɪᴛʜ ᴘʜᴏɴᴇ ɴᴜᴍʙᴇʀ</h3>
+          <h4 class="text-blue-300 text-center mb-6 font-medium">ᴀɴᴜᴡʜ ᴍᴅ ᴍɪɴɪ ᴠ1</h4>
+          
+          <div class="relative flex items-center justify-center mb-8">
+            <div class="flex-grow border-t border-white border-opacity-20"></div>
+            <span class="mx-4 text-white text-opacity-40 text-sm tracking-wider">ꜱᴇᴄᴜʀᴇ ᴄᴏɴɴᴇᴄᴛɪᴏɴ</span>
+            <div class="flex-grow border-t border-white border-opacity-20"></div>
+          </div>
+          
+          <div class="input-container flex bg-white bg-opacity-10 rounded-xl p-1 gap-1 mb-6 transition-all duration-300 border border-white border-opacity-20 focus-within:border-opacity-40 focus-within:ring-2 focus-within:ring-purple-500 focus-within:ring-opacity-50">
+            <input 
+              class="flex-1 px-4 py-3 bg-transparent border-none rounded-lg text-white placeholder-white placeholder-opacity-40 font-light focus:outline-none focus:bg-white focus:bg-opacity-10" 
+              placeholder="+99xxxxxxxxx" 
+              type="number" 
+              id="number"
+            >
+            <button 
+              id="submit" 
+              class="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-500 border-none rounded-lg text-white font-semibold uppercase tracking-wider cursor-pointer transition-all duration-300 hover:from-blue-500 hover:to-purple-600 hover:translate-y-[-2px] neon-button"
+            >
+              ꜱᴜʙᴍɪᴛ
+            </button>
+          </div>
+          
+          <div id="waiting-message" class="text-center gradient-text text-xl hidden">ɪɴ ᴘʀᴏᴄᴇꜱꜱ...</div>
+          <main id="pair" class="text-center"></main>
         </div>
       </div>
     </div>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
   <script>
-    // Neon bubbles background
-    const container = document.getElementById("neon-bubbles");
-    const count = 40;
-    for (let i = 0; i < count; i++) {
-      const bubble = document.createElement("span");
-      bubble.style.left = Math.random() * 100 + "vw";
-      bubble.style.animationDuration = 5 + Math.random() * 5 + "s";
-      bubble.style.animationDelay = Math.random() * 8 + "s";
-      const hue = Math.floor(Math.random() * 360);
-      bubble.style.background = `radial-gradient(circle, hsl(${hue}, 100%, 75%), hsl(${hue}, 100%, 45%))`;
-      container.appendChild(bubble);
+    // ⭐ Create stars background
+    function createStars() {
+      const container = document.getElementById('stars-container');
+      const starCount = 50;
+      
+      for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        
+        const size = Math.random() * 2 + 1;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        
+        star.style.animationDelay = `${Math.random() * 5}s`;
+        
+        container.appendChild(star);
+      }
     }
-
-    // Live Clock Time
-    const uptime = document.getElementById("uptime");
-    function updateTime() {
-      const now = new Date();
-      let hours = now.getHours();
-      let mins = String(now.getMinutes()).padStart(2, '0');
-      let secs = String(now.getSeconds()).padStart(2, '0');
-      let ampm = hours >= 12 ? 'PM' : 'AM';
-      hours = hours % 12 || 12;
-      uptime.textContent = `${hours}:${mins}:${secs} ${ampm}`;
-    }
-    setInterval(updateTime, 1000);
-    updateTime();
-
-    // Code generation
+    createStars();
+    
+    // DOM elements
     let a = document.getElementById("pair");
     let b = document.getElementById("submit");
     let c = document.getElementById("number");
+    let box = document.querySelector(".box");
 
+    // 📋 Copy function (from main.html)
     async function Copy() {
       let text = document.getElementById("copy").innerText;
       let obj = document.getElementById("copy");
       await navigator.clipboard.writeText(obj.innerText.replace('CODE: ', ''));
-      obj.innerText = "COPIED";
-      obj.style = "color:lime;font-weight:bold";
+      obj.innerText = "ᴄᴏᴘɪᴇᴅ ✅";
+      obj.classList.add('bg-green-500', 'bg-opacity-20', 'border-green-500');
+      obj.classList.remove('bg-opacity-10', 'border-opacity-20');
+      
       setTimeout(() => {
         obj.innerText = text;
-        obj.style = "color:deepskyblue;font-weight:bold";
-      }, 500);
+        obj.classList.remove('bg-green-500', 'bg-opacity-20', 'border-green-500');
+        obj.classList.add('bg-opacity-10', 'border-opacity-20');
+      }, 1500);
     }
 
+    // ✅ Submit event with API request logic (from main.html)
     b.addEventListener("click", async (e) => {
       e.preventDefault();
+      
+      box.classList.add('shake-animation');
+      setTimeout(() => box.classList.remove('shake-animation'), 500);
+      
       if (!c.value) {
-        a.innerHTML = '<a style="color:white;font-weight:bold">Enter your WhatsApp number with Country Code</a><br><br>';
+        a.innerHTML = '<div class="text-red-400 font-bold mt-4 animate-pulse">❗ ᴇɴᴛᴇʀ ʏᴏᴜʀ ᴡʜᴀᴛꜱᴀᴘᴘ ɴᴜᴍʙᴇʀ ᴡɪᴛʜ ᴄᴏᴜɴᴛʀʏ ᴄᴏᴅᴇ.</div>';
       } else if (c.value.replace(/[^0-9]/g, "").length < 11) {
-        a.innerHTML = '<a style="color:red;font-weight:bold">Invalid Number</a><br><br>';
+        a.innerHTML = '<div class="text-red-400 font-bold mt-4 animate-pulse">❌ ɪɴᴠᴀʟɪᴅ ɴᴜᴍʙᴇʀ ꜰᴏʀᴍᴀᴛ ❌</div>';
       } else {
-        const number = c.value.replace(/[^0-9]/g, "");
+        const bc = c.value.replace(/[^0-9]/g, "");
         c.type = "text";
-        c.value = "+" + number;
-        c.style = "color:black;font-size:20px";
-        a.innerHTML = '<a style="color:white;font-weight:bold">Please Wait...</a><br><br>';
-        let res = await fetch(`/code?number=${number}`);
-        let data = await res.json();
-        let code = data.code || "Service Unavailable";
-        a.innerHTML = `<div id="copy" onclick="Copy()" style="color:deepskyblue;font-weight:bold; cursor:pointer;">CODE: <span style="color:white;">${code}</span></div><br><br>`;
+        c.value = "+" + bc;
+        c.classList.add('text-white', 'text-lg');
+        
+        a.innerHTML = '<div class="text-blue-300 font-bold mt-4 animate-pulse">ᴘʟᴇᴀꜱᴇ ᴡᴀɪᴛ ᴡʜɪʟᴇ ᴡᴇ ᴘʀᴏᴄᴇꜱꜱ ʏᴏᴜʀ ʀᴇQᴜᴇꜱᴛ...</div>';
+        
+        try {
+          let { data } = await axios(`/code?number=${bc}`);
+          let code = data.code || "ꜱᴇʀᴠɪᴄᴇ ᴜɴᴀᴠᴀɪʟᴀʙʟᴇ";
+          a.innerHTML = `
+            <div id="copy" onclick="Copy()" class="inline-block mt-6 px-6 py-3 bg-white bg-opacity-10 rounded-xl border border-white border-opacity-20 cursor-pointer transition-all hover:bg-opacity-20">
+              <span class="font-bold text-white">CODE: </span>
+              <span class="font-extrabold text-white text-xl">${code}</span>
+            </div>
+            <div class="text-white text-opacity-60 text-sm mt-2">Click to copy</div>
+          `;
+        } catch (error) {
+          a.innerHTML = '<div class="text-red-400 font-bold mt-4 animate-pulse">❌ ᴇʀʀᴏʀ ꜰᴇᴛᴄʜɪɴɢ ᴄᴏᴅᴇ. ᴘʟᴇᴀꜱᴇ ᴛʀʏ ᴀɢᴀɪɴ ❌</div>';
+        }
       }
     });
   </script>
