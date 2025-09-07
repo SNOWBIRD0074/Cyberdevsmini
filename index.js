@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.listen(PORT, () => {
     console.log(`
-ꜰᴜᴄᴋɪɴɢ ɢɪᴠᴇ ᴀ ꜱᴛᴀʀ ᴛᴏ ᴀɴᴜᴡʜ ᴍᴅ ᴍɪɴɪ
+ ɢɪᴠᴇ ᴀ ꜱᴛᴀʀ ᴛᴏ ᴄʏʙᴇʀᴅᴇᴠs ᴍɪɴɪ
 
 
 Server running on http://localhost:` + PORT)

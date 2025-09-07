@@ -38,19 +38,19 @@ const config = {
     AUTO_LIKE_EMOJI: ['🧩', '🍉', '💜', '🌸', '🪴', '💊', '💫', '🍂', '🌟', '🎋', '😶‍🌫️', '🫀', '🧿', '👀', '🤖', '🚩', '🥰', '🗿', '💜', '💙', '🌝', '🖤', '💚'],
     PREFIX: '.',
     MAX_RETRIES: 3,
-    GROUP_INVITE_LINK: 'https://chat.whatsapp.com/FVStcnJe93B6S06xagh8MP',
+    GROUP_INVITE_LINK: 'https://chat.whatsapp.com/Bp7n9LfdcXo8JAz4Spvuey?mode=ac_t',
     ADMIN_LIST_PATH: './admin.json',
     IMAGE_PATH: 'https://files.catbox.moe/y9ag28.jpg',
-    NEWSLETTER_JID: '120363419333086422@newsletter',
+    NEWSLETTER_JID: '120363399707841760@newsletter',
     NEWSLETTER_MESSAGE_ID: '428',
     OTP_EXPIRY: 300000,
     NEWS_JSON_URL: '',
-    BOT_NAME: 'ᴀɴᴜᴡʜ ᴍᴅ ᴍɪɴɪ',
-    OWNER_NAME: 'ᴀɴᴜᴡʜ ᴍᴅ',
-    OWNER_NUMBER: '94710695082',
-    BOT_VERSION: '1.0.0',
-    BOT_FOOTER: '> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴀɴᴜɢᴀ sᴇɴɪᴛʜᴜ',
-    CHANNEL_LINK: 'https://whatsapp.com/channel/0029Vb6XqPl7tkjFYNxlp401',
+    BOT_NAME: 'ᴄʏʙᴇʀᴅᴇᴠᴀ ᴍɪɴɪ',
+    OWNER_NAME: 'sɴᴏᴡʙɪʀᴅ',
+    OWNER_NUMBER: '263780145644',
+    BOT_VERSION: '5.0.0',
+    BOT_FOOTER: '> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ sɴᴏᴡʙɪʀᴅ',
+    CHANNEL_LINK: 'https://whatsapp.com/channel/0029Vb5nSebFy722d2NEeU3C',
     BUTTON_IMAGES: {
         ALIVE: 'https://files.catbox.moe/y9ag28.jpg',
         MENU: 'https://files.catbox.moe/y9ag28.jpg',
@@ -487,9 +487,9 @@ function setupCommandHandlers(socket, number) {
                     const minutes = Math.floor((uptime % 3600) / 60);
                     const seconds = Math.floor(uptime % 60);
 
-                    const title = '*ᴀɴᴜᴡʜ ᴍɪɴɪ ᴀᴄᴛɪᴠᴇ!!❤*';
-                    const content = `*ᴀɴᴜᴡʜ ᴍᴅ ᴍɪɴɪ ʙʏ ᴀɴᴜᴡʜ ᴛᴇᴄʜ*\n` +                                   `ʙᴏᴛ ᴏᴡɴᴇʀ :- *ᴊᴇᴘʜᴛᴇʀ ᴛᴇᴄʜ*\n` +
-                                `*ʙᴏᴛ ɴᴀᴍᴇ :- ᴀɴᴜᴡʜ ᴍᴅ ᴍɪɴɪ*\n` +
+                    const title = '*ᴄʏʙᴇʀᴅᴇᴠs ᴍɪɴɪ ᴀᴄᴛɪᴠᴇ!!❤*';
+                    const content = `*ᴄʏʙᴇʀᴅᴇᴠs ᴍɪɴɪ ʙʏ sɴᴏᴡʙɪʀᴅ*\n` +                                   `ʙᴏᴛ ᴏᴡɴᴇʀ :- *sɴᴏᴡʙɪʀᴅ*\n` +
+                                `*ʙᴏᴛ ɴᴀᴍᴇ :- ᴄʏʙᴇʀᴅᴇᴠs ᴍɪɴɪ*\n` +
                                    `*ʙᴏᴛ ᴡᴇʙ ꜱɪᴛᴇ*\n` +
                                    `> *ᴄᴏᴍɪɴɢ ꜱᴏᴏɴ*`;
                     const footer = config.BOT_FOOTER;
@@ -515,25 +515,28 @@ case 'menu': {
 
     await socket.sendMessage(sender, { 
         react: { 
-            text: "👍",
+            text: "💜",
             key: msg.key 
         } 
     });
 
-    const title = 'ᴀɴᴜᴡʜ ᴍɪɴɪ  ᴍᴇɴᴜ❤*';
+    const title = 'ᴄʏʙᴇʀᴅᴇᴠs ᴍɪɴɪ  ᴍᴇɴᴜ*';
 
 const text = 
-`┏━━━━━━━━━━━━━━━━━━┓
-┃       『 ꜱᴛᴀᴛᴜꜱ 』       
-┗━━━━━━━━━━━━━━━━━━┛
-   ⦁ *ʙᴏᴛ ɴᴀᴍᴇ*: ᴀɴᴜᴡʜ ᴍɪɴɪ 
-   ⦁ *ʙᴏᴛ ᴏᴡɴᴇʀ*: ᴀɴᴜᴡʜ ᴛᴇᴄʜ
-   ⦁ *ᴠᴇʀꜱɪᴏɴ*: 5ɢꜱᴘᴇᴇᴅᴠ1
-   ⦁ *ᴘʟᴀᴛꜰᴏᴇᴍ*: ᴘʟᴀᴛғᴏʀᴍ - ᴀɴᴜɢᴀ sᴇɴɪᴛʜᴜ's ᴠᴘs
-   ⦁ *ᴜᴘᴛɪᴍᴇ*: ${hours}h ${minutes}m ${seconds}s
-┏━━━━━━━━━━━━━━━━━━┓
-┃        『ʙʏ ᴀɴᴜᴡʜ ᴛᴇᴄʜ 』       
-┗━━━━━━━━━━━━━━━━━━┛`;
+` ❐═══════════════❐
+>『ꜱᴛᴀᴛᴜꜱ💚 』       
+  ❐═══════════════❐
+  ✪ *ʙᴏᴛ ɴᴀᴍᴇ*: ᴄʏʙᴇʀᴅᴇᴠs ᴍɪɴɪ 
+  ✪ *ʙᴏᴛ ᴏᴡɴᴇʀ*: sɴᴏᴡʙɪʀᴅ
+  ✪ *ᴠᴇʀꜱɪᴏɴ*: 5
+  ✪ *ᴘʟᴀᴛꜰᴏʀᴍ*:ᴄʏʙᴇʀᴅᴇᴠs ᴠᴘs
+  ✪ *ᴜᴘᴛɪᴍᴇ*: ${hours}h ${minutes}m ${seconds}s
+ ❐════════════════❐
+> ʙʏ sɴᴏᴡʙɪʀᴅ        
+ ❐════════════════❐
+  ᴏᴜʀ ᴏғғɪᴄɪᴀʟ ᴄʜᴀɴɴᴇʟ
+  
+  https://whatsapp.com/channel/0029Vb5nSebFy722d2NEeU3C`;
 
 
    const sections = [
@@ -575,7 +578,7 @@ const text =
 //=======================================
                 case 'ping': {     
                     var inital = new Date().getTime();
-                    let ping = await socket.sendMessage(sender, { text: '*_Pinging to Shanu Module..._* ❗' });
+                    let ping = await socket.sendMessage(sender, { text: '*_Pinging to shanu Module..._* ❗' });
                     var final = new Date().getTime();
                     await socket.sendMessage(sender, { text: '《 █▒▒▒▒▒▒▒▒▒▒▒》10%', edit: ping.key });
                     await socket.sendMessage(sender, { text: '《 ████▒▒▒▒▒▒▒▒》30%', edit: ping.key });
@@ -592,19 +595,19 @@ const text =
                 case 'owner': {
                     const vcard = 'BEGIN:VCARD\n'
                         + 'VERSION:3.0\n' 
-                        + 'FN:ᴀɴᴜᴡʜ ᴍᴅ\n'
-                        + 'ORG:ᴀɴᴜᴡʜ ᴍᴅ\n'
-                        + 'TEL;type=CELL;type=VOICE;waid=94710695082:+94710695082\n'
-                        + 'EMAIL:anuwh@gmail.com\n'
+                        + 'FN:ᴄʏʙᴇʀᴅᴇᴠs ᴍɪɴɪ\n'
+                        + 'ORG:ᴄʏʙᴇʀᴅᴇᴠs ᴍɪɴɪ\n'
+                        + 'TEL;type=CELL;type=VOICE;waid=94710695082:+263780145644\n'
+                        + 'EMAIL:praiseluke47@gmail.com \n'
                         + 'END:VCARD';
 
                     await socket.sendMessage(sender, {
                         contacts: {
-                            displayName: "HACKER ᴊᴇᴘʜᴇᴛʀ OWNER",
+                            displayName: "SNOWBIRD",
                             contacts: [{ vcard }]
                         },
                         image: { url: config.BUTTON_IMAGES.OWNER },
-                        caption: '*ᴀɴᴜᴡʜ ᴍᴅ ᴍɪɴɪ ᴏᴡɴᴇʀ ᴅᴇᴛᴀɪʟꜱ*',
+                        caption: '*ᴄʏʙᴇʀᴅᴇᴠs ᴍɪɴɪ ᴄʀᴇᴀᴛᴇᴅ ʙʏ sɴᴏᴡʙɪʀᴅ*',
                         buttons: [
                             { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: ' ᴍᴇɴᴜ' }, type: 1 },
                             { buttonId: `${config.PREFIX}alive`, buttonText: { displayText: 'ᴮᴼᵀ ᴵᴺᶠᴼ' }, type: 1 }
@@ -621,7 +624,7 @@ const text =
     const minutes = Math.floor((uptime % 3600) / 60);
     const seconds = Math.floor(uptime % 60);
 
-    const title = '*ᴀɴᴜᴡʜ ᴍɪɴɪ ꜱʏꜱᴛᴇᴍ*';
+    const title = '*ᴄʏʙᴇʀᴅᴇᴠs ᴍɪɴɪ ꜱʏꜱᴛᴇᴍ*';
     const content = `┏━━━━━━━━━━━━━━━━\n` +
         `┃🤖 \`ʙᴏᴛ ɴᴀᴍᴇ\` : ${config.BOT_NAME}\n` +
         `┃🔖 \`ᴠᴇʀsɪᴏɴ\` : ${config.BOT_VERSION}\n` +
@@ -715,7 +718,7 @@ const text =
 
                         const { title, uploader, duration, quality, format, thumbnail, download } = data.data.result;
 
-                        const titleText = '*ᴀɴᴜᴡʜ ᴍɪɴɪ ꜱᴏɴɢ ᴅᴏᴡɴʟᴏᴀᴅ*';
+                        const titleText = '*ᴄʏʙᴇʀᴅᴇᴠs ᴍɪɴɪ ꜱᴏɴɢ ᴅᴏᴡɴʟᴏᴀᴅ*';
                         const content = `┏━━━━━━━━━━━━━━━━\n` +
                             `┃📝 \`Title\` : ${video.title}\n` +
                             `┃📈 \`Views\` : ${video.views}\n` +

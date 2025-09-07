@@ -1,5 +1,5 @@
 {
-  "name": "ᴀɴᴜᴡʜ ᴍᴅ ᴍɪɴɪ",
+  "name": "ᴄʏʙᴇʀᴅᴇᴠs ᴍɪɴɪ",
   "version": "1.0.0",
   "description": " WhatsApp Bot with Multi-Number Support",
   "main": "index.js",
@@ -33,6 +33,6 @@
     "baileys",
     "shala-md"
   ],
-  "author": "ᴀɴᴜᴡʜ ᴍᴅ",
+  "author": "sɴᴏᴡʙɪʀᴅ",
   "license": "MIT"
 }
