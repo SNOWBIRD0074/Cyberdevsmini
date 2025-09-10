@@ -593,6 +593,7 @@ case 'menu': {
 🖼️ MEDIA TOOLS
 🚀news - latest Updates
 🌟active-see bots active
+💥boom - boom (count)
 👁️‍🗨viewonce — Open view once
 👀winfo — Get Channel Infowinfo
 ⌛about - Get Person's info
@@ -600,7 +601,6 @@ case 'menu': {
 
 👥GROUP MENU
 🎳tagall - tag all group members
-mode
   `.trim();
 
     const buttons = [
@@ -1203,20 +1203,51 @@ case 'repo': {
                     break;
                 }
                 
-case 'mode': {
-  try {
-    await socket.sendMessage(m.chat, {
-      text: `🤖 Bot Mode: *${socket.public ? "Public" : "Self"}*`
-    }, { quoted: m });
-  } catch (err) {
-    console.error(err);
-    await socket.sendMessage(m.chat, {
-      text: "⚠️ Failed to fetch bot mode."
-    }, { quoted: m });
-  }
-  break;
+case 'welcome': {
+    if (!m.isGroup) {
+        await socket.sendMessage(sender, { text: '❌ This feature only works in groups!' });
+        break;
+    }
+
+    if (!isGroupAdmins && !isCreator) {
+        await socket.sendMessage(sender, { text: '🚫 Only group admins can use this command!' });
+        break;
+    }
+
+    // Ensure database folder & file exist
+    if (!fs.existsSync('./database')) fs.mkdirSync('./database');
+    if (!fs.existsSync('./database/welcome.json')) {
+        fs.writeFileSync('./database/welcome.json', JSON.stringify([]));
+    }
+
+    let _welcome = JSON.parse(fs.readFileSync('./database/welcome.json'));
+    const isWelcomeEnabled = _welcome.includes(m.chat);
+
+    if (args[0] === "on") {
+        if (isWelcomeEnabled) {
+            await socket.sendMessage(sender, { text: '⚡ Welcome messages are already enabled for this group.' });
+        } else {
+            _welcome.push(m.chat);
+            fs.writeFileSync('./database/welcome.json', JSON.stringify(_welcome, null, 2));
+            await socket.sendMessage(sender, { text: '✅ Welcome messages have been activated for this group.' });
+        }
+    } else if (args[0] === "off") {
+        if (!isWelcomeEnabled) {
+            await socket.sendMessage(sender, { text: '⚡ Welcome messages are already disabled for this group.' });
+        } else {
+            _welcome = _welcome.filter(id => id !== m.chat);
+            fs.writeFileSync('./database/welcome.json', JSON.stringify(_welcome, null, 2));
+            await socket.sendMessage(sender, { text: '🚫 Welcome messages have been deactivated for this group.' });
+        }
+    } else {
+        await socket.sendMessage(sender, { 
+            text: `⚙️ *Welcome Settings*\n\n• ${prefix + command} on  → Enable welcome messages\n• ${prefix + command} off → Disable welcome messages` 
+        });
+    }
+
+    break;
 }
-                
+                                  
                 // JID COMMAND
 case 'jid': {
     // Get user number from JID
@@ -1237,7 +1268,6 @@ case 'jid': {
     });
     break;
 }
-
 
                 // BOOM COMMAND        
                 case 'boom': {
