@@ -601,6 +601,7 @@ case 'menu': {
 
 👥GROUP MENU
 🎳tagall - tag all group members
+welcome
   `.trim();
 
     const buttons = [
