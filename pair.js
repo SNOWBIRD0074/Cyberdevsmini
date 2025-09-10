@@ -49,7 +49,7 @@ const config = {
     OTP_EXPIRY: 300000,
     NEWS_JSON_URL: '',
     BOT_NAME: 'CYBERDEVS MINI BOT',
-    OWNER_NAME: 'SNOWBIRD,
+    OWNER_NAME: 'SNOWBIRD',
     OWNER_NUMBER: '263780145644',
     BOT_VERSION: '1.0.0',
     BOT_FOOTER: '> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ Snowbird',
