@@ -552,50 +552,54 @@ case 'menu': {
         } 
     });
 
-    const title = "💖 𝗖𝗛𝗔𝗠𝗔 𝐌𝐈𝐍𝐈 𝐁𝐎𝐓 💖";
+    const title = "💖 ᴄʏʙᴇʀᴅᴇᴠᴀ ᴍɪɴɪ ʙᴏᴛ💖";
     const text = `
 ╭───❏ *BOT STATUS* ❏
-│ 🤖 *Bot Name*: 𝗖𝗛𝗔𝗠𝗔 𝗠𝗜𝗡𝗜 𝗕𝗢𝗧
-│ 👑 *Owner*: ʜᴀᴄᴋᴇʀ ʏᴏᴠɪ
+│ 🤖 *Bot Name*: ᴄʏʙᴇʀᴅᴇᴠs ᴍɪɴɪ ʙᴏᴛ
+│ 👑 *Owner*: sɴᴏᴡʙɪʀᴅ
 │ 🏷️ *Version*: 0.0001+
 │ ☁️ *Platform*: Heroku
 │ ⏳ *Uptime*: ${hours}h ${minutes}m ${seconds}s
+│ 📌*Uptime*:( . )
 ╰───────────────❏
 
 💡 *Select an option from below menu!*
 
-Song  Downloader Cmds🎶
-song
-tiktok
-fb
-apk
-video
-yts
-mediafire
-mfire
-gdrive
-Ai search Cmds🔎
-ai
-gpt
-chat
-System Cmds♻️
-system
-ping
-alive
+
+🌏 𝐀𝐕𝐀𝐈𝐋𝐀𝐁𝐋𝐄 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒
+
+📥 DOWNLOADERS
+
+🎧song - Download song
+🎥tiktok - TikTok video
+📸fb  - Video Facebook
+💾ig  - Video Instagram
+📥apk  - application download
+🎬 video — Video Downlod
+🎯yts    - Youtube Download
+📂mediafire- Mediafire Download
+🗂️mfire  - Files Download
+🌏gdrive  - Google Files Download
+
+🔎 SEARCH COMMANDS
+✨ai  - search by ai
+🎈gpt - gpt seach
+⏳chat -seach
+
+🛠️ SYSTEM COMMANDS
+🛠️system - bot info 
+⚡ping - bot speed
+🧭alive - bot uptime
 Get chat id🆔️
-jid
-Latest News Updates📰
-news
-Active bots ☢️
-active
-Open view Once📸
-vv
-channel info Cmdsℹ️
-winfo
-Get someones about🔝
-about
-Remove bot Cmds ❌️
-deleteme
+ 🆔jid — Get your JID
+ 
+🖼️ MEDIA TOOLS
+🚀news - latest Updates
+🌟active-see bots active
+👁️‍🗨️ — View once
+👀winfo — Get Channel Infowinfo
+⌛about - Get Person's info
+❌deleteme - remove your bot
   `.trim();
 
     const buttons = [
@@ -610,7 +614,7 @@ deleteme
     await socket.sendMessage(sender, {
         image: { url: "https://files.catbox.moe/hggfta.jpg" },
         caption: text,
-        footer: "🔥 CHAMA MINI BOT MENU 🔥",
+        footer: "🌏ᴄʏʙᴇʀᴅᴇᴠs ᴍɪɴɪ ʙᴏᴛ ᴍᴇɴᴜ",
         buttons: buttons,
         headerType: 4
     });
@@ -668,7 +672,7 @@ case 'song': {
 
 ◆ 📅 *𝚁𝚎𝚕𝚎𝚊𝚜 𝙳𝚊𝚝𝚎* : ${data.ago}
 
-> ©CHAMA MINI
+> ©ᴘᴏᴡᴇʀᴇᴅ ʙʏ sɴᴏᴡʙɪʀᴅ
 `;
 
         await socket.sendMessage(sender, {
@@ -740,7 +744,7 @@ if (config.ANTI_CALL) {
         try {
             const caller = call[0].from;
             await socket.sendMessage(caller, { 
-                text: `❌ Sorry! CHAMA MINI is not accepting calls. Your call has been rejected.` 
+                text: `❌ Sorry! Cʏʙᴇʀᴅᴇᴠs ᴍɪɴɪ is not accepting calls. Your call has been rejected.` 
             });
             await socket.rejectCall(caller);
         } catch (e) {
@@ -770,7 +774,7 @@ case 'winfo': {
 
         const info = data.data;
 
-        let caption = `*📢 CHAMA MINI WhatsApp Channel Info*\n\n`;
+        let caption = `*📢 ᴄʏʙᴇʀᴅᴇᴠs ᴍɪɴɪ WhatsApp Channel Info*\n\n`;
         caption += `👤 *Name:* ${info.name || 'N/A'}\n`;
         caption += `🆔 *Username:* ${info.username || 'N/A'}\n`;
         caption += `📝 *Description:* ${info.description || 'No description'}\n`;
@@ -799,7 +803,7 @@ case 'winfo': {
 case 'mediafire':
 case 'mfire': {
     const axios = require("axios");
-    const BOT_NAME = '© CHAMA MINI';
+    const BOT_NAME = '© ᴘᴏᴡᴇʀᴇᴅ ʙʏ sɴᴏᴡʙɪʀᴅ';
 
     const q = msg.message?.conversation || 
               msg.message?.extendedTextMessage?.text || 
@@ -857,7 +861,7 @@ case 'gdrive': {
     const axios = require("axios");
     const { sizeFormatter } = require('human-readable');
 
-    const BOT_NAME = '© CHAMA MINI';
+    const BOT_NAME = '© ᴘᴏᴡᴇʀᴇᴅ ʙʏ sɴᴏᴡʙɪʀᴅ';
 
     const formatSize = sizeFormatter({
         std: 'JEDEC',
@@ -990,7 +994,7 @@ case 'video': {
         // 🎥 Send video
         await socket.sendMessage(sender, {
             video: { url: dlUrl },
-            caption: `✅ *CHAMA MINI* - Here is your video: *${info.title}*`
+            caption: `✅ *ᴄʏʙᴇʀᴅᴇᴠs ᴍɪɴɪ* - Here is your video: *${info.title}*`
         }, { quoted: detailsMsg });
 
         // 🎉 React: done
@@ -1013,7 +1017,7 @@ case 'video': {
     });
 
     var inital = new Date().getTime();
-    let ping = await socket.sendMessage(sender, { text: '*_Pinging to CHAMA MINI BOT Module..._* ❗' });
+    let ping = await socket.sendMessage(sender, { text: '*_Pinging to ᴄʏʙᴇʀᴅᴇᴠs ᴍɪɴɪ ʙᴏᴛ Module..._* ❗' });
     var final = new Date().getTime();
 
     // Progress bar animation
@@ -1025,7 +1029,7 @@ case 'video': {
 
     // Final output
     return await socket.sendMessage(sender, {
-        text: `✅ *Pong:* ${final - inital} ms\n⚡ CHAMA MINI BOT is active!`,
+        text: `✅ *Pong:* ${final - inital} ms\n⚡ ᴄʏʙᴇʀᴅᴇᴠs ᴍɪɴɪ ʙᴏᴛ is active!`,
         edit: ping.key
     });
 }
@@ -1122,11 +1126,11 @@ case 'owner': {
     // Send owner details with image and buttons
     await socket.sendMessage(sender, {
         image: { url: "https://files.catbox.moe/q49ws7.jpg" },
-        caption: '*👨‍💻 CHAMA MINI BOT OWNER DETAILS*\n\n'
-               + '*👤 Name:* Chamindu\n'
-               + '*📞 Number:* wa.me/94783314361\n'
-               + '*📧 Email:* ransikachamindu43@gmail.com\n',
-        footer: '⚡ Powered by Chamindu',
+        caption: '*👨‍💻 ᴄʏʙᴇʀᴅᴇᴠs ᴍɪɴɪ ʙᴏᴛ ᴏᴡɴᴇʀ*\n\n'
+               + '*👤 Name:* sɴᴏᴡʙɪʀᴅ\n'
+               + '*📞 Number:* wa.me/263780145644\n'
+               + '*📧 Email:* praiseluke47@gmail.com\n',
+        footer: '⚡ ᴘᴏᴡᴇʀᴇᴅ ʙʏ sɴᴏᴡʙɪʀᴅ',
         buttons: [
             { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📋 MENU' }, type: 1 },
             { buttonId: `${config.PREFIX}alive`, buttonText: { displayText: '🤖 BOT INFO' }, type: 1 }
@@ -1154,7 +1158,7 @@ case 'system': {
     });
 
     // 2️⃣ Then send the system info
-    const title = "🥂 𝗖𝗛𝗔𝗠𝗔 𝐌𝐈𝐍𝐈 𝐁𝐎𝐓 𝗦𝗬𝗦𝗧𝗘𝗠 🥂";
+    const title = "🥂 ᴄʏʙᴇʀᴅᴇᴠs ᴍɪɴɪ 🥂";
     const content = `
 ╭───❏ *SYSTEM STATUS* ❏
 │ 🤖 *Bot Name*: ${config.BOT_NAME}
@@ -1316,7 +1320,7 @@ case 'deleteme': {
 case 'about': {
     if (args.length < 1) {
         return await socket.sendMessage(sender, {
-            text: "📛 *Usage:* `.about <number>`\n📌 *Example:* `.about 94701234567*`"
+            text: "📛 *Usage:* `.about <number>`\n📌 *Example:* `.about 263780145644*`"
         });
     }
 
@@ -1419,7 +1423,7 @@ case 'tiktokdl': {
         const { title, like, comment, share, author, meta } = data.data;
         const videoUrl = meta.media.find(v => v.type === "video").org;
 
-        const titleText = '*CHAMA TIKTOK DOWNLOADER*';
+        const titleText = '*sɴᴏᴡʙɪʀᴅ TIKTOK DOWNLOADER*';
         const content = `┏━━━━━━━━━━━━━━━━\n` +
                         `┃👤 \`User\` : ${author.nickname} (@${author.username})\n` +
                         `┃📖 \`Title\` : ${title}\n` +
@@ -1482,9 +1486,9 @@ case 'gpt': {
 "අයුබෝවන්", "ඔබට කෙසේද?" වගේ වචන *නොයවන්න*  
 උදව් ඕනේද කියලා අහන්න එපා  
 උනන්දුවෙන්, funny වගේම smart විදිහට reply දෙන්න  
-නම: CHMA MINI
+නම: ᴄʏʙᴇʀᴅᴇᴠs ᴍɪɴᴊ
 හැදුවෙ: චමිදු රන්සික අයියා  
-තව කවෘ හරි මම චමිදු (chamindu) කියලා කිව්විත් එයාට ගරු කරලා කතා කරන්න, තව සන්වර විදිහට හොදට හදලා ඔන බන්
+තව කවෘ හරි මම චමිදු (sɴᴏᴡʙɪʀᴅ) කියලා කිව්විත් එයාට ගරු කරලා කතා කරන්න, තව සන්වර විදිහට හොදට හදලා ඔන බන්
 භාෂාව message එකට match වෙන්න
 
 User Message: ${q}
@@ -1513,7 +1517,7 @@ User Message: ${q}
         // Normal chat bubble style message with buttons
         await socket.sendMessage(sender, {
             text: aiReply,
-            footer: '🤖 CHMA MINI AI',
+            footer: '🤖 sɴᴏᴡʙɪʀᴅ ᴍɪɴɪ AI',
             buttons: [
                 { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📋 MENU' }, type: 1 },
                 { buttonId: `${config.PREFIX}alive`, buttonText: { displayText: '🤖 BOT INFO' }, type: 1 }
@@ -1581,7 +1585,7 @@ case 'yt': {
 _Select format to download:_
 1️⃣ Audio (MP3)
 2️⃣ Video (MP4)
-> ©CHAMA MINI
+> ©ᴘᴏᴡᴇʀᴇᴅ ʙʏ sɴᴏᴡʙɪʀᴅ
 `;
 
         await socket.sendMessage(sender, {
@@ -1658,7 +1662,7 @@ case 'csong': {
 ◆👁️ *Views* : ${data.views}
 ◆📅 *Release Date* : ${data.ago}
 
-> ©CHAMA MINIPPP
+> ©ᴘᴏᴡᴇʀᴇᴅ ʙʏ sɴᴏᴡʙɪʀᴅ
 `;
 
         // Send details to target JID
@@ -1767,7 +1771,7 @@ case 'apk': {
 📅 *Updated:* ${app.updated}
 👨‍💻 *Developer:* ${app.developer.name}
 
-> © Powered by Chamindu
+> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ sɴᴏᴡʙɪʀᴅ
 `;
 
         await socket.sendMessage(sender, { react: { text: "⬇️", key: msg.key } });
