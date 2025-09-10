@@ -1,5 +1,5 @@
 {
-  "name": ,
+  "name": "CXD-MINI-BOT",
   "version": "1.0.0",
   "description": " WhatsApp Bot with Multi-Number Support",
   "main": "index.js",
@@ -8,24 +8,17 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@whiskeysockets/baileys": "npm:baileys-mod",
-    "@dark-yasiya/scrap": "1.0.1",
-    "@xaviabot/fb-downloader": "1.0.14",
-    "darksadas-yt-pornhub-scrape": "latest",
+    "baileys": "github:Bandah-E-Ali/Sarkar-Baileys",
     "express": "^4.18.2",
     "fs-extra": "^11.2.0",
-    "node-fetch": "^2.6.1",
-    "dotenv": "^16.4.5",
     "pino": "^8.17.0",
     "jimp": "^0.16.1",
-
     "@octokit/rest": "^20.0.2",
     "child_process": "^1.0.2",
-    "denethdev-ytmp3":"1.0.3",
     "denethdev-ytmp3": "1.0.3",
+    "yt-search": "2.12.1",
     "path": "^0.12.7",
     "axios": "^1.2.5",
-    "yt-search": "2.12.1",
     "moment-timezone": "^0.6.0"
   },
   "engines": {
@@ -36,8 +29,8 @@
     "bot",
     "multi-device",
     "baileys",
-    "shala-md"
+    "sula-md"
   ],
-  "author": "SHALA",
+  "author": "CYBER-ANUWH",
   "license": "MIT"
 }
