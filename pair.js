@@ -563,7 +563,40 @@ case 'menu': {
 ╰───────────────❏
 
 💡 *Select an option from below menu!*
-    `.trim();
+
+Song  Downloader Cmds🎶
+song
+tiktok
+fb
+apk
+video
+yts
+mediafire
+mfire
+gdrive
+Ai search Cmds🔎
+ai
+gpt
+chat
+System Cmds♻️
+system
+ping
+alive
+Get chat id🆔️
+jid
+Latest News Updates📰
+news
+Active bots ☢️
+active
+Open view Once📸
+vv
+channel info Cmdsℹ️
+winfo
+Get someones about🔝
+about
+Remove bot Cmds ❌️
+deleteme
+  `.trim();
 
     const buttons = [
         { buttonId: `${config.PREFIX}alive`, buttonText: { displayText: "💚 Alive" }, type: 1 },
