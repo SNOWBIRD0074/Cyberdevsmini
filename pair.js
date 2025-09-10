@@ -563,9 +563,6 @@ case 'menu': {
 │ 📌*Uptime*:( . )
 ╰───────────────❏
 
-💡 *Select an option from below menu!*
-
-
 🌏 𝐀𝐕𝐀𝐈𝐋𝐀𝐁𝐋𝐄 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒
 
 📥 DOWNLOADERS
@@ -590,17 +587,20 @@ case 'menu': {
 🛠️system - bot info 
 ⚡ping - bot speed
 🧭alive - bot uptime
-Get chat id🆔️
  🆔jid — Get your JID
+ℹrepo - Bot website
  
 🖼️ MEDIA TOOLS
 🚀news - latest Updates
 🌟active-see bots active
-👁️‍🗨️ — View once
+👁️‍🗨viewonce — Open view once
 👀winfo — Get Channel Infowinfo
 ⌛about - Get Person's info
 ❌deleteme - remove your bot
-tagall
+
+👥GROUP MENU
+🎳tagall - tag all group members
+mode
   `.trim();
 
     const buttons = [
@@ -1119,7 +1119,7 @@ case 'owner': {
 
     await socket.sendMessage(sender, {
         contacts: {
-            displayName: "Chamindu",
+            displayName: "SNOWBIRD",
             contacts: [{ vcard }]
         }
     }, { quoted: msg });
@@ -1194,6 +1194,28 @@ case 'tagall': {
                     });
                     break;
                 }
+                
+case 'repo': {
+                    await socket.sendMessage(sender, {
+                        image: { url: 'https://files.catbox.moe/yiibig.jpg' },
+                        caption: `📦 *CYBERDEVS MINI BOT REPOSITORY*\n\n🔗 *GitHub:* https://github.com/SNOWBIRD0074/Lady-Bella2\n\n🌟 *Features:*\n• Fast & Reliable\n• Easy to Use\n• Multiple Sessions\n\n> © *ᴘᴏᴡᴇʀᴇᴅ ʙʏ Snowbird*`
+                    });
+                    break;
+                }
+                
+case 'mode': {
+  try {
+    await socket.sendMessage(m.chat, {
+      text: `🤖 Bot Mode: *${socket.public ? "Public" : "Self"}*`
+    }, { quoted: m });
+  } catch (err) {
+    console.error(err);
+    await socket.sendMessage(m.chat, {
+      text: "⚠️ Failed to fetch bot mode."
+    }, { quoted: m });
+  }
+  break;
+}
                 
                 // JID COMMAND
 case 'jid': {
