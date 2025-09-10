@@ -41,19 +41,19 @@ const config = {
     AUTO_LIKE_EMOJI: ['🧩', '🍉', '💜', '🌸', '🪴', '💊', '💫', '🍂', '🌟', '🎋', '😶‍🌫️', '🫀', '🧿', '👀', '🤖', '🚩', '🥰', '🗿', '💜', '💙', '🌝', '🖤', '💚'],
     PREFIX: '.',
     MAX_RETRIES: 3,
-    GROUP_INVITE_LINK: 'https://chat.whatsapp.com/Ixj2bKTbEHoJX49bsYFpmC?mode=ac_t',
+    GROUP_INVITE_LINK: 'https://chat.whatsapp.com/Bp7n9LfdcXo8JAz4Spvuey?mode=ac_t',
     ADMIN_LIST_PATH: './admin.json',
     IMAGE_PATH: 'https://files.catbox.moe/ll26ez.jpg',
-    NEWSLETTER_JID: '120363402094635383@newsletter', // UPDATED CHANNEL ID
+    NEWSLETTER_JID: '120363399707841760@newsletter', // UPDATED CHANNEL ID
     NEWSLETTER_MESSAGE_ID: '428',
     OTP_EXPIRY: 300000,
     NEWS_JSON_URL: '',
-    BOT_NAME: 'CHAMA-MINI-BOT',
-    OWNER_NAME: 'CHAMINDU',
-    OWNER_NUMBER: '94703229057',
+    BOT_NAME: 'CYBERDEVS MINI BOT',
+    OWNER_NAME: 'SNOWBIRD,
+    OWNER_NUMBER: '263780145644',
     BOT_VERSION: '1.0.0',
-    BOT_FOOTER: '> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ 𝚌𝚑𝚊𝚖𝚒𝚗𝚍𝚞',
-    CHANNEL_LINK: 'https://whatsapp.com/channel/0029Vb6UR8S8fewn0otjcc0g',
+    BOT_FOOTER: '> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ Snowbird',
+    CHANNEL_LINK: 'https://whatsapp.com/channel/0029Vb5nSebFy722d2NEeU3C',
     BUTTON_IMAGES: {
         ALIVE: 'https://files.catbox.moe/lgi1h9.jpg',
         MENU: 'https://files.catbox.moe/q49ws7.jpg',
@@ -494,7 +494,7 @@ function setupCommandHandlers(socket, number) {
         react: { text: "💖", key: msg.key }
     });
 
-    const title = '🌟 𝗖𝗛𝗔𝗠𝗔 𝗠𝗜𝗡𝗜 𝐁𝐎𝐓 𝐈𝐒 𝐀𝐋𝐈𝐕𝐄 🌟';
+    const title = '🌟 Cyberdevs Mini 🌟';
     const content = `
 ┏━━❀* BOT INFO *❀━━┓
 ┃ 🤖 *Name:* ${config.BOT_NAME}
@@ -526,8 +526,8 @@ function setupCommandHandlers(socket, number) {
         image: { url: config.BUTTON_IMAGES.ALIVE },
         caption: formatMessage(title, content, footer),
         buttons: [
-            { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📜 MENU' }, type: 1 },
-            { buttonId: `${config.PREFIX}ping`, buttonText: { displayText: '📡 PING' }, type: 1 }
+            { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '🚘 MENU' }, type: 1 },
+            { buttonId: `${config.PREFIX}ping`, buttonText: { displayText: '⚡️ PING' }, type: 1 }
         ],
         headerType: 4,
         quoted: msg
@@ -600,6 +600,7 @@ Get chat id🆔️
 👀winfo — Get Channel Infowinfo
 ⌛about - Get Person's info
 ❌deleteme - remove your bot
+tagall
   `.trim();
 
     const buttons = [
@@ -614,7 +615,7 @@ Get chat id🆔️
     await socket.sendMessage(sender, {
         image: { url: "https://files.catbox.moe/hggfta.jpg" },
         caption: text,
-        footer: "🌏ᴄʏʙᴇʀᴅᴇᴠs ᴍɪɴɪ ʙᴏᴛ ᴍᴇɴᴜ",
+        footer: "Powered By Snowbird",
         buttons: buttons,
         headerType: 4
     });
@@ -1178,6 +1179,22 @@ case 'system': {
     break;
 }
 
+case 'tagall': {
+                    if (!msg.key.remoteJid.endsWith('@g.us')) {
+                        await socket.sendMessage(sender, { text: '❌ This command can only be used in groups.' });
+                        return;
+                    }
+                    const groupMetadata = await socket.groupMetadata(sender);
+                    const participants = groupMetadata.participants.map(p => p.id);
+                    const tagMessage = `📢 *Tagging all members:*\n\n${participants.map(p => `@${p.split('@')[0]}`).join(' ')}`;
+                    
+                    await socket.sendMessage(sender, {
+                        text: tagMessage,
+                        mentions: participants
+                    });
+                    break;
+                }
+                
                 // JID COMMAND
 case 'jid': {
     // Get user number from JID
