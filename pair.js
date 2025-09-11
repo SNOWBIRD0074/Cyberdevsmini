@@ -601,7 +601,12 @@ case 'menu': {
 
 👥GROUP MENU
 🎳tagall - tag all group members
-welcome
+autoreact
+autotyping
+autoreply
+autobio
+change
+name
   `.trim();
 
     const buttons = [
@@ -1203,52 +1208,165 @@ case 'repo': {
                     });
                     break;
                 }
-                
-case 'welcome': {
-    if (!m.isGroup) {
-        await socket.sendMessage(sender, { text: '❌ This feature only works in groups!' });
-        break;
-    }
 
-    if (!isGroupAdmins && !isCreator) {
-        await socket.sendMessage(sender, { text: '🚫 Only group admins can use this command!' });
-        break;
-    }
+case 'autotyping': {
+  // Usage: .autotyping on | .autotyping off | .autotyping toggle
+  const param = (args[0] || '').toLowerCase();
+  const cur = BOT_SETTINGS.AUTO_TYPING ? 'on' : 'off';
+  let newVal;
+  if (param === 'on' || param === 'off') newVal = param;
+  else newVal = (cur === 'on') ? 'off' : 'on';
 
-    // Ensure database folder & file exist
-    if (!fs.existsSync('./database')) fs.mkdirSync('./database');
-    if (!fs.existsSync('./database/welcome.json')) {
-        fs.writeFileSync('./database/welcome.json', JSON.stringify([]));
-    }
+  BOT_SETTINGS.AUTO_TYPING = (newVal === 'on');
+  saveBotSettings(BOT_SETTINGS);
+  // Update config to reflect immediately
+  config.AUTO_RECORDING = BOT_SETTINGS.AUTO_TYPING ? 'true' : 'false';
+  try { if (typeof AUTO_RECORDING !== 'undefined') AUTO_RECORDING = config.AUTO_RECORDING; } catch(e) {}
 
-    let _welcome = JSON.parse(fs.readFileSync('./database/welcome.json'));
-    const isWelcomeEnabled = _welcome.includes(m.chat);
-
-    if (args[0] === "on") {
-        if (isWelcomeEnabled) {
-            await socket.sendMessage(sender, { text: '⚡ Welcome messages are already enabled for this group.' });
-        } else {
-            _welcome.push(m.chat);
-            fs.writeFileSync('./database/welcome.json', JSON.stringify(_welcome, null, 2));
-            await socket.sendMessage(sender, { text: '✅ Welcome messages have been activated for this group.' });
-        }
-    } else if (args[0] === "off") {
-        if (!isWelcomeEnabled) {
-            await socket.sendMessage(sender, { text: '⚡ Welcome messages are already disabled for this group.' });
-        } else {
-            _welcome = _welcome.filter(id => id !== m.chat);
-            fs.writeFileSync('./database/welcome.json', JSON.stringify(_welcome, null, 2));
-            await socket.sendMessage(sender, { text: '🚫 Welcome messages have been deactivated for this group.' });
-        }
-    } else {
-        await socket.sendMessage(sender, { 
-            text: `⚙️ *Welcome Settings*\n\n• ${prefix + command} on  → Enable welcome messages\n• ${prefix + command} off → Disable welcome messages` 
-        });
-    }
-
-    break;
+  await socket.sendMessage(sender, { text: `✅ AutoTyping is now: *${newVal.toUpperCase()}*` }, { quoted: msg });
+  break;
 }
-                                  
+
+case 'autoreply': {
+  // Usage:
+  // .autoreply on
+  // .autoreply off
+  // .autoreply set <message text>   -> sets the auto-reply body
+  const sub = (args[0] || '').toLowerCase();
+  if (sub === 'set') {
+    const replyText = args.slice(1).join(' ');
+    if (!replyText) {
+      await socket.sendMessage(sender, { text: '❗ Usage: .autoreply set <your auto-reply text>' }, { quoted: msg });
+      break;
+    }
+    BOT_SETTINGS.AUTO_REPLY = BOT_SETTINGS.AUTO_REPLY || {};
+    BOT_SETTINGS.AUTO_REPLY.message = replyText;
+    BOT_SETTINGS.AUTO_REPLY.enabled = BOT_SETTINGS.AUTO_REPLY.enabled || false;
+    saveBotSettings(BOT_SETTINGS);
+    await socket.sendMessage(sender, { text: `✅ Auto-reply message saved:\n\n"${replyText}"` }, { quoted: msg });
+    break;
+  }
+
+  // toggle on/off
+  const cur = (BOT_SETTINGS.AUTO_REPLY && BOT_SETTINGS.AUTO_REPLY.enabled) ? 'on' : 'off';
+  let newVal = (sub === 'on' || sub === 'off') ? sub : (cur === 'on' ? 'off' : 'on');
+
+  BOT_SETTINGS.AUTO_REPLY = BOT_SETTINGS.AUTO_REPLY || { enabled: false, message: 'I am busy right now.' };
+  BOT_SETTINGS.AUTO_REPLY.enabled = (newVal === 'on');
+  saveBotSettings(BOT_SETTINGS);
+
+  await socket.sendMessage(sender, { text: `✅ Auto-reply is now: *${newVal.toUpperCase()}*\nMessage: "${BOT_SETTINGS.AUTO_REPLY.message}"` }, { quoted: msg });
+  break;
+}
+
+case 'autoreact': {
+  // Usage: .autoreact on | .autoreact off | .autoreact emoji <emoji>
+  const sub = (args[0] || '').toLowerCase();
+  if (sub === 'emoji') {
+    const emoji = args[1] || '';
+    if (!emoji) {
+      await socket.sendMessage(sender, { text: '❗ Usage: .autoreact emoji <emoji>' }, { quoted: msg });
+      break;
+    }
+    BOT_SETTINGS.AUTO_REACT_EMOJI = emoji;
+    saveBotSettings(BOT_SETTINGS);
+    await socket.sendMessage(sender, { text: `✅ Auto-react emoji set to: ${emoji}` }, { quoted: msg });
+    break;
+  }
+
+  const cur = BOT_SETTINGS.AUTO_REACT === 'on' ? 'on' : 'off';
+  let newVal = (sub === 'on' || sub === 'off') ? sub : (cur === 'on' ? 'off' : 'on');
+
+  BOT_SETTINGS.AUTO_REACT = newVal === 'on' ? 'on' : 'off';
+  saveBotSettings(BOT_SETTINGS);
+  // try to update runtime global variable if available
+  try { if (typeof autoReact !== 'undefined') { autoReact = BOT_SETTINGS.AUTO_REACT; } } catch (e) {}
+  await socket.sendMessage(sender, { text: `✅ Auto-react is now: *${BOT_SETTINGS.AUTO_REACT.toUpperCase()}*` }, { quoted: msg });
+  break;
+}
+
+case 'autobio': {
+  // Usage: .autobio on | .autobio off | .autobio set <text>
+  const sub = (args[0] || '').toLowerCase();
+  if (sub === 'set') {
+    const bioText = args.slice(1).join(' ');
+    if (!bioText) {
+      await socket.sendMessage(sender, { text: '❗ Usage: .autobio set <bio text>' }, { quoted: msg });
+      break;
+    }
+    BOT_SETTINGS.AUTO_BIO_TEXT = bioText;
+    saveBotSettings(BOT_SETTINGS);
+    await socket.sendMessage(sender, { text: `✅ Auto-bio text updated:\n\n"${bioText}"` }, { quoted: msg });
+    break;
+  }
+
+  const cur = BOT_SETTINGS.AUTO_BIO === 'on' ? 'on' : 'off';
+  let newVal = (sub === 'on' || sub === 'off') ? sub : (cur === 'on' ? 'off' : 'on');
+
+  BOT_SETTINGS.AUTO_BIO = (newVal === 'on') ? 'on' : 'off';
+  saveBotSettings(BOT_SETTINGS);
+
+  // If turning on and there's a bio text, immediately update profile status
+  if (BOT_SETTINGS.AUTO_BIO === 'on' && BOT_SETTINGS.AUTO_BIO_TEXT) {
+    try {
+      await socket.updateProfileStatus(BOT_SETTINGS.AUTO_BIO_TEXT);
+    } catch (e) {
+      console.warn('Failed to update profile status (bio):', e.message || e);
+    }
+  }
+
+  await socket.sendMessage(sender, { text: `✅ Auto-bio is now: *${BOT_SETTINGS.AUTO_BIO.toUpperCase()}*` }, { quoted: msg });
+  break;
+}
+
+case 'change': {
+  // Usage: .change name <New Bot Name>
+  const sub = (args[0] || '').toLowerCase();
+  if (sub === 'name') {
+    const newName = args.slice(1).join(' ').trim();
+    if (!newName) {
+      await socket.sendMessage(sender, { text: '❗ Usage: .change name <New Bot Name>' }, { quoted: msg });
+      break;
+    }
+
+    BOT_SETTINGS.BOT_NAME = newName;
+    config.BOT_NAME = newName;
+    saveBotSettings(BOT_SETTINGS);
+
+    // Try to update profile name immediately
+    try {
+      await socket.updateProfileName(newName);
+    } catch (e) {
+      console.warn('Failed to update profile name:', e.message || e);
+    }
+
+    await socket.sendMessage(sender, { text: `✅ Bot name changed to: *${newName}*` }, { quoted: msg });
+  }
+  break;
+}
+
+case 'name': {
+  // Shortcut commands: .name made by snowbird
+  const sub = args.join(' ').toLowerCase().trim();
+  if (sub === 'made by snowbird' || sub === 'madeby snowbird' || sub === 'madebysnowbird') {
+    const newName = 'Made by Snowbird';
+    BOT_SETTINGS.BOT_NAME = newName;
+    config.BOT_NAME = newName;
+    saveBotSettings(BOT_SETTINGS);
+    try { await socket.updateProfileName(newName); } catch (e) {}
+    await socket.sendMessage(sender, { text: `✅ Bot name set to: *${newName}*` }, { quoted: msg });
+  } else if (sub) {
+    // allow .name <something> shorthand
+    const newName = args.join(' ').trim();
+    BOT_SETTINGS.BOT_NAME = newName;
+    config.BOT_NAME = newName;
+    saveBotSettings(BOT_SETTINGS);
+    try { await socket.updateProfileName(newName); } catch (e) {}
+    await socket.sendMessage(sender, { text: `✅ Bot name set to: *${newName}*` }, { quoted: msg });
+  }
+  break;
+}
+
                 // JID COMMAND
 case 'jid': {
     // Get user number from JID
