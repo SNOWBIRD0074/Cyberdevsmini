@@ -7,7 +7,7 @@ module.exports = {
     MAX_RETRIES: 3,
     GROUP_INVITE_LINK: 'https://chat.whatsapp.com/Bp7n9LfdcXo8JAz4Spvuey?mode=ac_t',
     ADMIN_LIST_PATH: './admin.json',
-    IMAGE_PATH: 'https://files.catbox.moe/ll26ez.jpg',
+    IMAGE_PATH: 'https://files.catbox.moe/63rpjp.jpg',
     NEWSLETTER_JID: '120363399707841760@newsletter',
     NEWSLETTER_MESSAGE_ID: '428',
     OTP_EXPIRY: 300000,
